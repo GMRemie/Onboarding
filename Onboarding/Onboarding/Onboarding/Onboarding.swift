@@ -30,14 +30,14 @@ class Onboarding: UIView, UIScrollViewDelegate {
     
     private func createControls() {
         scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        scrollView?.backgroundColor = .black
+        scrollView?.backgroundColor = .red
         self.addSubview(scrollView!)
         scrollView!.delegate = self
     }
     
     
     func setupSlideScrollView(slides : [Slide]) {
-        scrollView!.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        scrollView!.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.frame.height)
         scrollView!.contentSize = CGSize(width: self.frame.width * CGFloat(slides.count), height: self.frame.height)
         scrollView!.isPagingEnabled = true
            
@@ -64,15 +64,11 @@ class Onboarding: UIView, UIScrollViewDelegate {
             let percentageVerticalOffset: CGFloat = currentVerticalOffset / maximumVerticalOffset
             
             
-            /*
-             * below code changes the background color of view on paging the scrollview
-             */
-    //        self.scrollView(scrollView, didScrollToPercentageOffset: percentageHorizontalOffset)
+
+       // scrollView(scrollView, didScrollToPercentageOffset: percentageHorizontalOffset)
             
         
-            /*
-             * below code scales the imageview on paging the scrollview
-             */
+ 
             let percentOffset: CGPoint = CGPoint(x: percentageHorizontalOffset, y: percentageVerticalOffset)
             
             if(percentOffset.x > 0 && percentOffset.x <= 0.25) {
